@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+    <style>
+      .main-area {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 30px;
+        justify-items: center;
+        overflow: hidden;
+      }
+      .pics-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+      }
+      .form-details {
+        width: 100%;
+      }
+      .form-field {
+        margin-bottom: 30px;
+      }
+      .form-field label,
+      .form-field input,
+      .form-field button,
+      .form-field textarea,
+      .form-field select {
+        display: block;
+        width: 50%;
+        margin: 10px auto;
+        border: 0;
+        outline: 0;
+      }
+      .form-field input,
+      .form-field textarea,
+      .form-field select {
+        border-bottom: 1px solid var(--primaryColor);
+      }
+      .form-field button {
+        background-color: var(--primaryColor);
+        border-radius: 7px;
+        padding: 8px 15px;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        .main-area {
+          padding: 30px 0;
+        }
+        .form-field label,
+        .form-field input,
+        .form-field button,
+        .form-field textarea,
+        .form-field select {
+          width: 80%;
+          margin: 10px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <%-include("partials/header")%> <%-include("partials/aside")%>
+      <main class="ma">
+        <div class="main-area">
+          <div class="pics-area">
+            <div class="avatar">📝</div>
+            <h3>New Task</h3>
+          </div>
+          <div class="form-details">
+            <form class="task-form">
+              <div class="form-field">
+                <label for="name">Title:</label>
+                <input type="text" name="title" class="form-data" id="title" />
+              </div>
+              <div class="form-field">
+                <label for="name">Description:</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  rows="2"
+                  class="form-data"
+                ></textarea>
+              </div>
+              <div class="form-field">
+                <label for="name">Deadline:</label>
+                <input type="date" name="deadline" class="form-data" />
+              </div>
+              <div class="form-field">
+                <label for="name">Priority:</label>
+                <select name="priority" id="" class="form-data">
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <button>CREATE</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="alert">
+          <p class="alert-message"></p>
+        </div>
+      </main>
+      <%-include("partials/footer")%>
+    </div>
+    <script src="/js/pop.js"></script>
+    <script src="/js/taskApiRequest.js"></script>
+  </body>
+</html>

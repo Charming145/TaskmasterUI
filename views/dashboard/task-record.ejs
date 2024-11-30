@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+    <style>
+      .main-area {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 30px;
+        justify-items: center;
+        overflow: auto;
+        /* position: relative; */
+      }
+      .table {
+        width: 100%;
+        overflow: auto;
+      }
+      table {
+        text-align: left;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      tr:nth-child(even) {
+        background-color: rgb(164, 203, 173);
+      }
+      td,
+      th {
+        /* border: 1px solid gray; */
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+      th {
+        background-color: var(--primaryColor);
+        color: white;
+      }
+      .filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 20px;
+        width: 100%;
+        padding: 10px;
+      }
+      /* ############################## */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(50, 50, 50, 0.8);
+        transition-duration: 1.5s;
+        opacity: 0;
+      }
+      .hidden {
+        display: none;
+      }
+      .show {
+        display: block;
+      }
+      .modal {
+        max-width: 50%;
+        min-height: 90%;
+        background-color: white;
+        margin: 3rem auto;
+        position: relative;
+      }
+      /* ############################### */
+      .close {
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition-duration: 1s;
+      }
+
+      .pics-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+      }
+      .form-details {
+        width: 100%;
+      }
+      .modal .form-field {
+        margin-bottom: 30px;
+      }
+      .modal .form-field label,
+      .modal .form-field input,
+      .modal .form-field button,
+      .modal .form-field textarea,
+      .modal .form-field select {
+        display: block;
+        width: 50%;
+        margin: 10px auto;
+        border: 0;
+        outline: 0;
+      }
+      .modal .form-field input,
+      .modal .form-field textarea,
+      .modal .form-field select {
+        border-bottom: 1px solid var(--primaryColor);
+      }
+      .form-field button {
+        background-color: var(--primaryColor);
+        border-radius: 7px;
+        padding: 8px 15px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <%-include("partials/header")%> <%-include("partials/aside")%>
+      <main class="ma">
+        <div class="main-area">
+          <div class="title">
+            <h1>Task Record</h1>
+            <p>
+              You have upto <span class="counter">50</span> task yet to be
+              completed.
+            </p>
+          </div>
+          <div class="table">
+            <table>
+              <div class="filter">
+                <div class="form-field">
+                  <label for="name">Search:</label>
+                  <input
+                    type="text"
+                    placeholder="Search for task"
+                    id="searchQuery"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="name">Priority:</label>
+                  <select name="priority" class="filter-by-priority">
+                    <option value="">Select</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="name">Deadline:</label>
+                  <input type="date" name="deadline" class="filter-by-date" />
+                </div>
+              </div>
+              <thead>
+                <tr>
+                  <th>s/N</th>
+                  <th>Title</th>
+                  <th>Deadline</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody class="task-body">
+                <tr>
+                  <td>1</td>
+                  <td>Goto Work</td>
+                  <td>00:45:32</td>
+                  <td>High</td>
+                  <td>🟢</td>
+                  <td>
+                    <a href="update-task.html">Edit</a>
+                    <a href="">Delete</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Grocery store</td>
+                  <td>00:55:00</td>
+                  <td>Low</td>
+                  <td>🔴</td>
+                  <td>
+                    <a href="update-task.html">Edit</a>
+                    <a href="">Delete</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Work shift</td>
+                  <td>01:25:32</td>
+                  <td>Low</td>
+                  <td>🔴</td>
+                  <td>
+                    <a href="update-task.html">Edit</a>
+                    <a href="">Delete</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Settle the customers</td>
+                  <td>01:25:32</td>
+                  <td>Low</td>
+                  <td>🔴</td>
+                  <td>
+                    <a href="update-task.html">Edit</a>
+                    <a href="">Delete</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="alert">
+          <p class="alert-message"></p>
+        </div>
+        <div class="modal-overlay hidden">
+          <div class="modal">
+            <div class="close"><i class="close-btn">❌</i></div>
+
+            <div class="pics-area">
+              <div class="avatar">📝</div>
+              <h3>Update Task</h3>
+            </div>
+
+            <div class="form-details">
+              <form action="" class="profile-form">
+                <div class="form-field">
+                  <label for="name">Title:</label>
+                  <input type="text" name="title" />
+                </div>
+                <div class="form-field">
+                  <label for="name">Description:</label>
+                  <textarea name="description" id="" rows="2"></textarea>
+                </div>
+                <div class="form-field">
+                  <label for="name">Deadline:</label>
+                  <input type="date" name="deadline" />
+                </div>
+                <div class="form-field">
+                  <label for="name">Priority:</label>
+                  <select name="priority" id="">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <button>UPDATE</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+      <%-include("partials/footer")%>
+      <script src="/js/pop.js"></script>
+      <script src="/js/taskApiRequest.js"></script>
+      <%-include("partials/aside")%>
+      <script>
+        const clostBtnEl = document.querySelector(".close-btn");
+        // // const modalEl = document.querySelector(".overlay-modal");
+        // const editBtnEl = document.querySelector(".edit-task-btn");
+        clostBtnEl.addEventListener("click", () => {
+          modalEl.style.opacity = "0";
+          setTimeout(() => {
+            modalEl.classList.add("hidden");
+          }, 500);
+        });
+        // editBtnEl.addEventListener("click", () => {
+        //   modalEl.classList.remove("hidden");
+        //   // modalEl.classList.add("hidden");
+        // });
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --primaryColor: rgb(33, 97, 60);
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+header {
+  min-height: 70px;
+  background-color: var(--primaryColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  position: relative;
+}
+header nav {
+  flex-grow: 1;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4%;
+}
+.navbar-items,
+header a {
+  color: white;
+}
+.active {
+  padding: 0.7rem 1.2rem;
+  background-color: white;
+  border-radius: 8px 0 8px 0;
+  color: rgb(54, 130, 59);
+}
+.active:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(35, 100, 40);
+}
+.mobile-responsive-btn {
+  position: absolute;
+  right: 2rem;
+  display: none;
+}
+.mobile-responsive-btn img {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+/* ######################### */
+/* Responsive Nav Design */
+.responsive-header {
+  position: fixed;
+  right: 0;
+  left: 10%;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  padding: 3%;
+  transition-duration: 1s;
+  opacity: 0;
+  display: none;
+}
+.responsive-header a {
+  color: var(--primaryColor);
+}
+.responsive-header .brand {
+  margin: 1.5rem 0;
+  font-size: 1rem;
+}
+.responsive-navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.responsive-navbar-items {
+  border-bottom: 1px solid gray;
+}
+.close-responsive-btn {
+  font-size: 26px;
+  opacity: 0.8;
+}
+/* Form Messages */
+.message {
+  background-color: rgb(218, 72, 72);
+  color: white;
+  padding: 5px 0;
+}
+.hide-message {
+  display: none;
+}
+.success-message {
+  background-color: rgb(84, 211, 84);
+}
+/* Index-page Css */
+.sec-1 {
+  background: url("/images/pexels-julia-m-cameron-4145190.jpg") no-repeat;
+  min-height: 560px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sec-1-cont {
+  max-width: 50%;
+  background-color: rgba(50, 50, 50, 0.5);
+  color: white;
+  padding: 2rem;
+  border-radius: 0 0 50px 0;
+}
+.sec-1-cont h1 {
+  margin-bottom: 1.5rem;
+}
+.sec-1-cont p {
+  line-height: 1.5;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+.sec-1-cont .btn {
+  padding: 0.8rem 1.5rem;
+  border: 0;
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+}
+/* INdex Ends */

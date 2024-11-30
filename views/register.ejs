@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+    <style>
+      .sec-1 {
+        background: url("images/pexels-julia-m-cameron-4145190.jpg") no-repeat;
+        height: 560px;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .sec-1-cont {
+        width: 40%;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: gray;
+        padding: 50px;
+        border-radius: 0 0 50px 50px;
+      }
+      .sec-1-cont h1 {
+        margin-bottom: 30px;
+        color: var(--primaryColor);
+      }
+      .sec-1-cont p {
+        line-height: 1.5;
+        text-align: justify;
+        margin-bottom: 15px;
+      }
+      .sec-1-cont .btn {
+        padding: 10px 20px;
+        border: 0;
+        background-color: var(--primaryColor);
+        color: white;
+        cursor: pointer;
+        width: 70%;
+      }
+      .form-field {
+        margin-bottom: 25px;
+      }
+      .form-field input {
+        width: 70%;
+        border: 0;
+        border-bottom: 1px solid gray;
+        outline: 0;
+        font-size: 18px;
+        background-color: transparent;
+      }
+      /* Media Query */
+      @media (max-width: 768px) {
+        .sec-1-cont {
+          width: 70%;
+          padding: 1.3rem;
+        }
+        .form-field input {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <%-include("partials/header")%>
+    <main>
+      <section class="sec-1">
+        <div class="sec-1-cont">
+          <div class="message hide-message">
+            <h3 class="message-text"></h3>
+          </div>
+          <div class="avatar">
+            <img src="/images/icons8-avatar-96.png" alt="icons8-avatar-96" />
+          </div>
+          <h1>CREATE ACCOUNT</h1>
+
+          <form action="" class="register">
+            <div class="form-field">
+              <input type="text" name="username" placeholder="Name:" />
+            </div>
+            <div class="form-field">
+              <input type="email" name="email" placeholder="Email:" />
+            </div>
+            <div class="form-field">
+              <input type="password" name="password" placeholder="Password:" />
+            </div>
+            <div class="form-field">
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password:"
+              />
+            </div>
+            <div class="form-field">
+              <button class="btn">REGISTER</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <%-include("partials/script")%>
+  </body>
+</html>

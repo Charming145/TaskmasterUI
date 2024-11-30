@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+    <style>
+      .ma {
+        overflow: auto;
+      }
+      .main-area {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 250px);
+        justify-content: center;
+        gap: 20px;
+        padding: 30px;
+        overflow: auto;
+      }
+      .main-items {
+        background-color: var(--secondaryColor);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 10px;
+        border-radius: 8px;
+      }
+      .main-items a {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <%-include("partials/header")%> <%-include("partials/aside")%>
+
+      <main class="ma">
+        <div class="main-area">
+          <div class="main-items">
+            <span class="main-items-icon">📝</span>
+            <a href="" class="main-items-link">Dashboard</a>
+          </div>
+          <div class="main-items" style="background-color: rgb(194, 186, 73)">
+            <span class="main-items-icon">👤</span>
+            <a href="/dashboard/user/profile" class="main-items-link"
+              >Profile</a
+            >
+          </div>
+          <div class="main-items" style="background-color: rgb(49, 122, 240)">
+            <span class="main-items-icon">⚙️</span>
+            <a href="/dashboard/user/new-task" class="main-items-link"
+              >Create Task</a
+            >
+          </div>
+          <div class="main-items" style="background-color: rgb(202, 95, 202)">
+            <span class="main-items-icon">⚙️</span>
+            <a href="/dashboard/user/task-record" class="main-items-link"
+              >Task Record</a
+            >
+          </div>
+
+          <div class="main-items" style="background-color: rgb(21, 72, 21)">
+            <span class="main-items-icon">⚙️</span>
+            <a href="/dashboard/user/settings" class="main-items-link"
+              >Settings</a
+            >
+          </div>
+        </div>
+      </main>
+
+      <%-include("partials/footer")%>
+    </div>
+  </body>
+</html>

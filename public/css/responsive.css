@@ -1,0 +1,30 @@
+@media (max-width: 768px) {
+  header {
+    justify-content: space-between;
+  }
+  .navbar {
+    display: none;
+  }
+  .mobile-responsive-btn {
+    display: block;
+  }
+
+  /* Index Responsive */
+  .sec-1-cont {
+    max-width: 70%;
+    background-color: rgba(50, 50, 50, 0.7);
+  }
+  .sec-1-cont h1 {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+  .sec-1-cont p {
+    font-size: 0.9rem;
+  }
+  .sec-1-cont .btn {
+    padding: 0.6rem 1.3rem;
+  }
+  /* INdex Ends */
+}
+@media (max-width: 600px) {
+}
